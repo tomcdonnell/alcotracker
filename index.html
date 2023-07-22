@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script src='js/AlcoDb.js'></script>
+  <link rel='stylesheet' href='css/style.css'/>
+  <title>Alcotracker</title>
+  <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+  <script type='text/javascript' src='js/index.js'></script>
+ </head>
+ <body>
+  <h1>Alcotracker</h1>
+  <table>
+   <thead id='main-thead'>
+    <tr>
+     <th class='align-r'>ID</th>
+     <th class='align-l'>Drink description</th>
+     <th class='align-r'>Std. drinks</th>
+     <th class='align-r'>Time</th>
+    </tr>
+   </thead>
+   <tbody id='main-tbody'>
+   </tbody>
+  </table>
+  <div class='buttons-container'>
+   <button onclick='window.location.href="add_drink.html"'>Add drink</button>
+   <button onclick='_clearDb()'>Reset</button>
+   <button onclick='window.location.href="settings.html"'>Settings</button>
+  </div>
+  <div id='chart-div' class='block-container align-c'></div>
+ </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel='stylesheet' href='css/style.css'/>
+  <script src='js/AlcoDb.js'></script>
+  <title>Alcotracker - Add Drink</title>
+  <script>
+if (document.readyState !== 'loading') {
+  main();
+} else {
+   document.addEventListener('DOMContentLoaded', main);
+}
+
+function main() {
+   var date = new Date();
+   document.getElementById('drinkTime').value = date.toTimeString().substring(0, 5);
+}
+
+function addDrinkFromForm() {
+   const formEl        = document.getElementById('add-drink-form');
+   const formData      = new FormData(formEl)
+   const alcoDb        = new AlcoDb();
+   const insertedRowId = alcoDb.addDrinkAtTime(
+      ((formData.get('drinkDesc') === '')? 'Unknown drink': formData.get('drinkDesc')),
+      formData.get('nStdDrinks'),
+      formData.get('drinkTimeHia')
+   );
+
+   window.location.href = 'index.html?addedRowId=' + insertedRowId;
+}
+  </script>
+ </head>
+ <body>
+  <h1><a href='index.html'>Alcotracker</a></h1>
+  <h2>Add Drink</h2>
+  <div class='block-container'>
+   <p>
+    Enter the number of standard drinks below.
+    If you don't know this number, use the information below to estimate.
+   </p>
+  </div>
+  <hr/>
+  <form id='add-drink-form'>
+   <div class='block-container'>
+    <label for='drinkDesc'>Drink description:</label>
+    <input id='drinkDesc' name='drinkDesc' type='text'/>
+   </div>
+   <div class='block-container'>
+    <label for='nStdDrinks'>Number of standard drinks:</label>
+    <input id='nStdDrinks' name='nStdDrinks' type='number' min='0' max='5' step='0.1' value='1.0'/>
+   </div>
+   <div class='block-container'>
+    <label for='drinkTime'>Time:</label>
+    <input id='drinkTime' name='drinkTimeHia' type='time'/>
+   </div>
+   <div class='block-container'>
+    <label></label>
+    <button type='button' onclick='addDrinkFromForm()'>Add</button>
+   </div>
+  </form>
+  <hr/>
+  <h2>Estimate Standard Drinks</h2>
+  <table class='align-l'>
+   <thead>
+    <tr>
+     <th>Drink Type</th>
+     <th>Strength</th>
+     <th>Size</th>
+     <th>Std. Drinks</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>Beer</td>
+     <td>Heavy</td>
+     <td>Pot</td>
+     <td>1.0</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td>Schooner</td>
+     <td>1.5</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td>Pint</td>
+     <td>2.0</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td>Can</td>
+     <td>1.4</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td>Mid</td>
+     <td colspan='2'>= Heavy x 0.75</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td>Light</td>
+     <td colspan='2'>= Heavy x 0.50</td>
+    </tr>
+    <tr>
+     <td>Wine</td>
+     <td></td>
+     <td>Small Glass</td>
+     <td>1.0</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td>Med. Glass</td>
+     <td>1.5</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td>Large Glass</td>
+     <td>1.5</td>
+    </tr>
+    <tr>
+     <td>Cocktails</td>
+     <td>Spirits</td>
+     <td>1 Shot</td>
+     <td>1.0</td>
+    </tr>
+    <tr>
+     <td></td>
+     <td>Liqueurs</td>
+     <td>1 Shot</td>
+     <td>0.5</td>
+    </tr>
+   </tbody>
+  </table>
+  <div class='block-container'>
+   <p class='align-c'>
+    <a href='https://www.health.gov.au/topics/alcohol/about-alcohol/standard-drinks-guide'>Government Guide to Standard Drinks</a>
+   </p>
+  </div>
+ </body>
+</html>

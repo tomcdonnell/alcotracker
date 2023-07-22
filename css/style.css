@@ -1,0 +1,62 @@
+/*
+ * Style for Alcotracker.
+ */
+
+* {
+   font-family: sans-serif;
+}
+
+*.align-l {text-align: left   !important;}
+*.align-c {text-align: center !important;}
+*.align-r {text-align: right  !important;}
+
+h1, h2 {
+   text-align: center;
+}
+
+div.block-container {
+   margin-left: auto;
+   margin-right: auto;
+   width: 500px;
+}
+
+table {
+   background-color: #000;
+   border-collapse: separate;
+   border-radius: 10px;
+   border-spacing: 1px;
+   color: white;
+   margin-bottom: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 500px;
+}
+
+table > tbody#main-tbody > tr.added-row > td {
+   background-color: red;
+}
+
+table th,
+table td {
+   padding-left: 3px;
+   padding-right: 3px;
+}
+
+div.buttons-container {
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+label {
+   display: inline-block;
+   width: 300px;
+}
+
+input,
+button {
+   width: 100px;
+}
+
+#chart-div {
+   height: 500px;
+}
